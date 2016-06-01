@@ -2,10 +2,6 @@
 title: Emerald | A simple Jekyll blog
 description: "A minimal blog template, build with Jekyll."
 url: "https://deskian.github.io/"
-author:
-  name: "Jacopo Rabolini"
-  email: "hello@jacoporabolini.com"
-  url: "http://www.jacoporabolini.com"
 
 # Build settings
 baseurl: / # Change this to your relative path (ex: /blog/), or leave just a /
@@ -14,7 +10,7 @@ source: .
 destination: ./_site
 permalink: /:title
 gems: [jekyll-paginate]
-paginate: 8
+paginate: 4
 paginate_path: /page:num/
 
 # Default values

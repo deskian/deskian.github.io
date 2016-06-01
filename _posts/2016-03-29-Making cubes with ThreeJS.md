@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building 3D cubes with ThreeJS
+title: Building 3D cubes with ThreeJS (1/6)
 ---
 
 ThreeJS is a lightweight library that aim to create 3D object with very low level complexity. The library will help define the scene, the lighting as well as render the object itself according to those factor. I will try to implement some simple shape (cubes in particular) with this library.

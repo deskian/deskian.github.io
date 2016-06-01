@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building 3D cubes with ThreeJS
+title: Building 3D cubes with ThreeJS (2/6)
 ---
 
 And we are back!
