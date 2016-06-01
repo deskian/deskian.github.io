@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building 3D cubes with ThreeJS (3/6)
+title: Building 3D cubes with ThreeJS (3/5)
 ---
 
 So last time, we ended with a square on the screen, and it looks 2D! Not the most exciting cube I would say. But fear not! We will prove that it is a cube right now.

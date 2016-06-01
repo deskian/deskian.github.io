@@ -1,31 +1,53 @@
 ---
 layout: post
-title: Building 3D cubes with ThreeJS (4/6)
+title: Building 3D cubes with ThreeJS (4/5)
 ---
 
-So last time, we ended with a square on the screen, and it looks 2D! Not the most exciting cube I would say. But fear not! We will prove that it is a cube right now.
+Last time, we ended with a rotating cube. But then the cube is uniform in color, it was very hard to see where the edges are.
 
-Let start by making it rotate a little bit. We will start by defining an animate function
+Today, we have 2 choices, either we add some lighting to show the different faces, or we change the color of the different faces. Let's do both!
 
-```javascript 
+First to add lighting, we first have to change the material of the cube so it is receptive of the lighting: 
 
-function animate() {
-  requestAnimationFrame( animate );
-  cube.rotation.x += .02;
-  cube.rotation.y += .02;
-  renderer.render(scene,camera);
-}
-animate();
+```javascript
+  var cubeMaterial = new THREE.MeshBasicMaterial({color: 0x4f46f5});
+
+to
+
+  var cubeMaterial = new THREE.MeshLambertMaterial({color: 0x4f46f5});
 
 ```
 
-A few notes: 
-  requestAnimationFrame will set the animate function to fire at about 60 times a seconds, which is about as fast as most browser will render it to create a continuous feel to the animation.
+Then we add lighting:
 
-  cube.rotation.x and cube.rotation.y change the orientation of the cube by a set amount every time the animate function is called. 
+```javascript
 
-  Finally, each frame is re-render so we can see the new update state of the cube.
+  directionalLight = new THREE.DirectionalLight(0xffffff);
+  directionalLight.position.set(1,1,1).normalize();
+  scene.add( directionalLight );
 
-And.... Whoohoo! Animated cube!
+```
 
-![Alt text](http://i.imgur.com/0rJdqb5.gif)
+It is important to note that this light shine from the top right, and diagonally downward. But that aside, below is the new cube:
+
+![Alt text](http://i.imgur.com/Hx8IoFe.gif)
+
+Now, let's try something new, we will change each face of the cube to a different color, to make it even more defined, we will replace the cubeMaterial with this:
+
+```javascript
+
+  var cubeMaterial = new THREE.MeshBasicMaterial({ vertexColors: THREE.FaceColors });
+  for (var i = 0; i < cubeShape.faces.length; i+=2){
+    var temp = Math.random() * 0xffffff
+    cubeShape.faces[ i ].color.setHex( temp );
+    cubeShape.faces[ i + 1 ].color.setHex( temp );
+  }
+
+
+```
+
+Note that the mesh define each face as 2 triangle, instead of a square. Thus we need to do both triangles as the same color, otherwise it looks a little strange.
+
+![Alt text](http://i.imgur.com/bnVo3qw.gif)
+
+Next, we will expand and build a couple more cubes, maybe test the limit of this rendering engine. Stay tune!
